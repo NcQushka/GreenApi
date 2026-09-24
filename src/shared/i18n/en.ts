@@ -3,6 +3,7 @@ import type { Translation } from '@/shared/i18n/ru.ts'
 export const en: Translation = {
   login: 'Log in',
   logout: 'Log out',
+  invalidCredentials: 'Invalid credentials',
   chatId: 'Phone or id',
   message: 'Message',
   send: 'Send',
@@ -11,6 +12,7 @@ export const en: Translation = {
   sent: 'Sent',
   received: 'Received',
   unknownError: 'Unknown error',
+  userNotFound: 'User not found',
   messenger: 'Messenger',
   logs: 'Logs',
   clearLogs: 'Clear',

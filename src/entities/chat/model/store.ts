@@ -16,6 +16,7 @@ type ChatStore = {
   activeChatId: string | null
   openChat: (entered: string) => void
   mergeChats: (entered: string, chatId: string, name?: string) => void
+  removeChat: (chatId: string) => void
   addOutgoing: (message: ChatMessage) => void
   markSent: (localId: string, idMessage: string) => void
   markFailed: (localId: string) => void
@@ -81,6 +82,12 @@ export const useChatStore = create<ChatStore>()(
             ],
           }
         }),
+      removeChat: (chatId) =>
+        set((state) => ({
+          chats: state.chats.filter((chat) => chat.id !== chatId),
+          messages: state.messages.filter((message) => message.chatId !== chatId),
+          activeChatId: state.activeChatId === chatId ? null : state.activeChatId,
+        })),
       addOutgoing: (message) =>
         set((state) => ({
           messages: [...state.messages, message],

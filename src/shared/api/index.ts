@@ -1,5 +1,6 @@
 export { checkAccount } from '@/shared/api/account.ts'
-export { getErrorMessage, isCancelError } from '@/shared/api/client.ts'
+export { getErrorMessage, isAuthError, isCancelError, isNetworkError, setAuthErrorHandler } from '@/shared/api/client.ts'
 export { sendMessage } from '@/shared/api/message.ts'
 export { deleteNotification, readTextMessage, receiveNotification } from '@/shared/api/notification.ts'
+export { verifySession } from '@/shared/api/settings.ts'
 export type { Session, TextMessage } from '@/shared/api/types.ts'

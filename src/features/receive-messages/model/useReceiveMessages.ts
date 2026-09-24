@@ -35,7 +35,12 @@ export const useReceiveMessages = () => {
             status: LogStatus.received,
           })
         },
-        onError: (error) => setError({ message: getErrorMessage(error) }),
+        onError: (error) => {
+          const message = getErrorMessage(error)
+          const current = useReceiveStore.getState().error
+          if (current?.message === message) return
+          setError({ message })
+        },
         onSuccess: () => setError(null),
       })
     }

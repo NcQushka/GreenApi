@@ -1,6 +1,7 @@
 export const ru = {
   login: 'Войти',
   logout: 'Выйти',
+  invalidCredentials: 'Неверные данные для входа',
   chatId: 'Номер или id',
   message: 'Сообщение',
   send: 'Отправить',
@@ -9,6 +10,7 @@ export const ru = {
   sent: 'Отправлено',
   received: 'Получено',
   unknownError: 'Неизвестная ошибка',
+  userNotFound: 'Пользователь не найден',
   messenger: 'Мессенджер',
   logs: 'Логи',
   clearLogs: 'Очистить',

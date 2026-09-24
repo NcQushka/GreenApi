@@ -22,6 +22,12 @@ export const http = axios.create({
   },
 })
 
+let authErrorHandler: (() => void) | null = null
+
+export const setAuthErrorHandler = (handler: (() => void) | null) => {
+  authErrorHandler = handler
+}
+
 const textOf = (value: unknown) => (isString(value) ? trim(value) : '')
 
 const readErrorText = (body: unknown): string | undefined => {
@@ -43,19 +49,30 @@ const readErrorText = (body: unknown): string | undefined => {
 const toApiError = (error: AxiosError) =>
   new ApiError(error.response?.status ?? 0, readErrorText(error.response?.data) ?? error.message)
 
+const isUnauthorizedStatus = (status: number) => status === 401 || status === 403
+
 http.interceptors.response.use(
   (response) => response,
   (error: unknown) => {
     if (!axios.isAxiosError(error) || error.code === 'ERR_CANCELED') throw error
-    throw toApiError(error)
+    const apiError = toApiError(error)
+    if (isUnauthorizedStatus(apiError.status)) authErrorHandler?.()
+    throw apiError
   },
 )
 
 export const isCancelError = (error: unknown) => axios.isCancel(error)
 
+export const isAuthError = (error: unknown) =>
+  error instanceof ApiError && isUnauthorizedStatus(error.status)
+
+export const isNetworkError = (error: unknown) =>
+  error instanceof ApiError && error.status === 0
+
 export const getErrorMessage = (error: unknown): string | null => {
   if (error instanceof ApiError) {
-    return error.status ? `${error.status}: ${error.message}` : error.message
+    if (!error.status) return null
+    return `${error.status}: ${error.message}`
   }
   if (isError(error) && !isEmpty(error.message)) return error.message
   return null
