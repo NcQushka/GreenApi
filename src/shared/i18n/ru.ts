@@ -1,0 +1,28 @@
+export const ru = {
+  login: 'Войти',
+  logout: 'Выйти',
+  chatId: 'Номер или id',
+  message: 'Сообщение',
+  send: 'Отправить',
+  pickChat: 'Выберите чат',
+  notSent: 'Не отправлено',
+  sent: 'Отправлено',
+  received: 'Получено',
+  unknownError: 'Неизвестная ошибка',
+  messenger: 'Мессенджер',
+  logs: 'Логи',
+  clearLogs: 'Очистить',
+  emptyLogs: 'Событий пока нет',
+  time: 'Время',
+  direction: 'Направление',
+  chat: 'Чат',
+  text: 'Текст',
+  duration: 'Длительность',
+  status: 'Статус',
+  outgoing: 'Исходящие',
+  incoming: 'Входящие',
+  failed: 'Ошибки',
+  averageSend: 'Среднее время отправки',
+} as const
+
+export type Translation = { [Key in keyof typeof ru]: string }

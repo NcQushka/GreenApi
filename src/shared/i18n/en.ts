@@ -1,0 +1,28 @@
+import type { Translation } from '@/shared/i18n/ru.ts'
+
+export const en: Translation = {
+  login: 'Log in',
+  logout: 'Log out',
+  chatId: 'Phone or id',
+  message: 'Message',
+  send: 'Send',
+  pickChat: 'Select a chat',
+  notSent: 'Not sent',
+  sent: 'Sent',
+  received: 'Received',
+  unknownError: 'Unknown error',
+  messenger: 'Messenger',
+  logs: 'Logs',
+  clearLogs: 'Clear',
+  emptyLogs: 'No events yet',
+  time: 'Time',
+  direction: 'Direction',
+  chat: 'Chat',
+  text: 'Text',
+  duration: 'Duration',
+  status: 'Status',
+  outgoing: 'Outgoing',
+  incoming: 'Incoming',
+  failed: 'Failed',
+  averageSend: 'Average send time',
+}
